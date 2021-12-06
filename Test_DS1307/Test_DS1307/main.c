@@ -3,31 +3,33 @@
  *
  * Created: 9/13/2021 3:36:35 PM
  * Author : VTMKhoi
- * Component: Using KIT Atmega12 ThienMinh interfaced with module RTC DS1307
- */ 
+ * Component: Using Atmega32 int
+*/
+
 
 #define F_CPU 7372800UL
 
 #include <avr/io.h>
-#include <myDS1307RTC.h>
+#include "myDS1307RTC.h"
 #include <avr/myLCD.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
 
-volatile uint8_t	Second=55, Minute=33, Hour=16, Day=1, Date=13, Month=9, Year=21, Mode=1, AP=1;
+volatile uint8_t	Second=00, Minute=9, Hour=13, Day=8, Date=5, Month=12, Year=21, Mode=1, AP=1;
 volatile uint8_t	tData[7], Time_count = 0;
+
 char dis[5];
 
-/*
-??i BCD sang th?p phân
-*/
+
+//??i BCD sang th?p phân
+
 uint8_t BCD2Dec(uint8_t BCD)
 {
 	uint8_t L, H;
 	L=BCD & 0x0F;
 	H=(BCD>>4)*10;
-	return (H+L);
+	return (H+L); 
 }
 uint8_t Dec2BCD(uint8_t Dec)
 {
