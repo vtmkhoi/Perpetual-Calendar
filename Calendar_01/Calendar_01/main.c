@@ -160,15 +160,14 @@ void Display(void)
 void Display_7seg (void)
 {
 	MAX7219_clearDisplay();
-	
-	MAX7219_writeData(0x08,MAX7219_CHAR_BLANK);
-	MAX7219_writeData(0x07,MAX7219_CHAR_BLANK);
-	MAX7219_writeData(0x06,(Second%10));
-	MAX7219_writeData(0x05,(Second/10));
-	MAX7219_writeData(0x04,(Minute%10));
-	MAX7219_writeData(0x03,(Minute/10));
-	MAX7219_writeData(0x02,(Hour%10));
-	MAX7219_writeData(0x01,(Hour/10));
+	MAX7219_writeData(MAX7219_DIGIT7,(Second%10));
+	MAX7219_writeData(MAX7219_DIGIT6,(Second/10));
+	MAX7219_writeData(MAX7219_DIGIT5, 0x0A);
+	MAX7219_writeData(MAX7219_DIGIT4,(Minute%10));
+	MAX7219_writeData(MAX7219_DIGIT3, (Minute/10));
+	MAX7219_writeData(MAX7219_DIGIT2, 0x0A);
+	MAX7219_writeData(MAX7219_DIGIT1, (Hour%10));
+	MAX7219_writeData(MAX7219_DIGIT0, (Hour/10));
 }
 void Init_MAX()
 {
@@ -190,12 +189,13 @@ void Init_MAX()
 }
 int main(void)
 {	
+	/*
 	//khoi dong LCD-----------------------
 	init_LCD();
 	clr_LCD();	
 	_delay_ms(1000);
 	//------------------------------------
-	
+	*/
 	//khoi dong Timer0 lam bo dinh thi 1s------------------------------------------------
 	TCCR0=(1<<CS02)|(0<<CS01)|(1<<CS00);	//CS02=1, CS01=0, CS00=1: chon Prescaler=1024 
     TIMSK=(1<<TOIE0);						//cho phep ngat khi co tran o T/C0
@@ -220,12 +220,13 @@ int main(void)
 	TWI_DS1307_wadr(0x00); //set dia chi ve 0
 	_delay_ms(1);			//cho DS1307 xu li 
 	TWI_DS1307_rblock(tData,7); //doc ca khoi thoi gian (7 bytes)	
-	Display(); // hien thi ket qua len LCD	
+	//Display(); // hien thi ket qua len LCD	
 	//************************************************************************************
 	Init_MAX();
-	Decode();
+	//Decode();
 	while(1)
 	{
+		Decode();
 		Display_7seg();
 	}
 	return 0;
@@ -243,9 +244,9 @@ ISR (TIMER0_OVF_vect){
 		if(BCDToDec(tData[0]) !=Second)	//chi hien thi ket qua khi da qua 1s
 		{ 	
 			Second=BCDToDec(tData[0] & 0x7F);
-			sprintf(dis, "%i",Second); 
-			move_LCD(1,13); print_LCD("  ");
-			move_LCD(1,13); print_LCD(dis);
+			//sprintf(dis, "%i",Second); 
+			//move_LCD(1,13); print_LCD("  ");
+			//move_LCD(1,13); print_LCD(dis);
 			Decode();
 			Display_7seg();
 			if (Second==0) Display(); 		//moi phut cap nhat 1 lan			
