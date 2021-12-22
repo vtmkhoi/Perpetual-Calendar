@@ -430,17 +430,19 @@ int main(void){
 	//************************************************************************************
 	while(1)
 	{
-		
+		PORT_LED_O |= (1<<BIT_LED_O);
 		yyyy=Year+2000;
 		convertSolar2Lunar(Date, Month, yyyy, timeZone);	
+		//PORT_LED_O |= (1<<BIT_LED_O);
 		Display_7seg();
 		/*
 		if (Hour == A_Hour && Minute == A_Minute && EN_alarm == true)
 		{	
-			PORT_LED_O |= (1<<BIT_LED_O);
-			//Display_7seg();
+			
+			Display_7seg();
 			//BTN_PORTD |= (1<<BUZ_LED);
-		}*/
+			PORT_LED_O &= ~(1<<BIT_LED_O);
+		} */
 	}
 	return 0;
 }
