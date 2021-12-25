@@ -1,0 +1,336 @@
+Added Component: Designator=Bat-holder1(TE_796136-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "EU_RoHS_Compliance"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "796136-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number_of_Positions"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/796136-1/TE%20Connectivity%20AMP%20Connectors/view-part/761452/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-796136-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=BZZ?(SPEAKER)
+Added Component: Designator=C1(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C2(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C3(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C4(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C5(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C6_Alu(C_FC_6.3x5.4_D)
+Added Component: Designator=Conn1(MOLEX_47346-0001)
+Add component (AddParameter): Name = "Availability"; Value = "Warning"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/47346-0001/Molex/view-part/53503/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "47346-0001"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Purchase-URL"; Value = "https://pricing.snapeda.com/search/part/47346-0001/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/47346-0001/Molex/view-part/53503/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Crys_1(ABLS2-8.000MHZ-D4Y-T)
+Add component (AddParameter): Name = "Component Type"; Value = "Crystal"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "ABRACON"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part No"; Value = "ABLS2-8.000MHZ-D4Y-T"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Order Code"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "8MHz"; VariantName = "[No Variations]"
+Added Component: Designator=Crys(XT32k)
+Add component (AddParameter): Name = "Value"; Value = "4Mhz"; VariantName = "[No Variations]"
+Added Component: Designator=D1(7SEGQ)
+Add component (AddParameter): Name = "Value"; Value = "LED 7Q SEG"; VariantName = "[No Variations]"
+Added Component: Designator=D2(7SEGQ)
+Add component (AddParameter): Name = "Value"; Value = "LED 7Q SEG"; VariantName = "[No Variations]"
+Added Component: Designator=ISet1(VR-S1)
+Add component (AddParameter): Name = "Value"; Value = "Volume 50k"; VariantName = "[No Variations]"
+Added Component: Designator=Q1(SOT23-321)
+Add component (AddParameter): Name = "Value"; Value = "A1015"; VariantName = "[No Variations]"
+Added Component: Designator=R1(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R2(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R3(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R4(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R5(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R6(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R6(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=Sw1(SW_1571527-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "EU_RoHS_Compliance"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "1571527-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SMD-6 Omron Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/1571527-1/TE%20Connectivity/view-part/244428/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1571527-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Sw2(SW_1571527-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "EU_RoHS_Compliance"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "1571527-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SMD-6 Omron Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/1571527-1/TE%20Connectivity/view-part/244428/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1571527-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Sw3(SW_1571527-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "EU_RoHS_Compliance"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "1571527-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SMD-6 Omron Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/1571527-1/TE%20Connectivity/view-part/244428/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1571527-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Sw4(SW_1571527-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "EU_RoHS_Compliance"; Value = "Compliant"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "1571527-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SMD-6 Omron Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/1571527-1/TE%20Connectivity/view-part/244428/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1571527-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=U1(SOT_AMS_ADS)
+Add component (AddParameter): Name = "Built_By"; Value = "EMA_Matt"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Copyright"; Value = "Copyright (C) 2018 Accelerated Designs. All rights reserved"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "AMS1117"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefDes"; Value = "RefDes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SourceLibrary"; Value = "Advanced_Monolithic_Systems_10-16-2019"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "DEV"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vendor"; Value = "Advanced Monolithic Systems"; VariantName = "[No Variations]"
+Added Component: Designator=U2(TQFP44)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.atmel.com/products/avr/default.asp?"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "ATxmega16A4/32A4/64A4/128A4 Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.atmel.com/dyn/resources/prod_documents/doc8069.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Atmel.com Home"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.atmel.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "revN, Feb-2010"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "44-Pin Plastic Thin Profile Quad Flat Pack, 10 x 10 x 1.0 mm Body, 0.8 mm Pitch (TQFP)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "44A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "rev.B, Oct-2001"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "1-Apr-2010"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 3"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "ATXMEGA32A4-AU-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = "1748557"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 3"; Value = "556-ATXMEGA32A4-AU"; VariantName = "[No Variations]"
+Added Component: Designator=U4(SO24)
+Add component (AddParameter): Name = "Code_JEDEC"; Value = "MS-001-AF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.maxim-ic.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://pdfserv.maxim-ic.com/en/ds/MAX7219-MAX7221.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Jul-1997"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "29-May-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Component Body Added."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "DIP, 24-Pin, Row Spacing 7.62 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "NG24A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "1997"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "16-Jan-2001"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Adjust Pin=R4-1
+Added Pin To Net: NetName=Adjust Pin=Sw2-3
+Added Pin To Net: NetName=Adjust Pin=Sw2-4
+Added Pin To Net: NetName=Adjust Pin=U2-12
+Added Net: Name=Adjust
+Added Pin To Net: NetName=CLK Pin=U2-3
+Added Pin To Net: NetName=CLK Pin=U4-13
+Added Net: Name=CLK
+Added Pin To Net: NetName=Dig0 Pin=D1-12
+Added Pin To Net: NetName=Dig0 Pin=U4-2
+Added Net: Name=Dig0
+Added Pin To Net: NetName=Dig1 Pin=D1-9
+Added Pin To Net: NetName=Dig1 Pin=U4-11
+Added Net: Name=Dig1
+Added Pin To Net: NetName=Dig2 Pin=D1-8
+Added Pin To Net: NetName=Dig2 Pin=U4-6
+Added Net: Name=Dig2
+Added Pin To Net: NetName=Dig3 Pin=D1-6
+Added Pin To Net: NetName=Dig3 Pin=U4-7
+Added Net: Name=Dig3
+Added Pin To Net: NetName=Dig4 Pin=D2-12
+Added Pin To Net: NetName=Dig4 Pin=U4-3
+Added Net: Name=Dig4
+Added Pin To Net: NetName=Dig5 Pin=D2-9
+Added Pin To Net: NetName=Dig5 Pin=U4-10
+Added Net: Name=Dig5
+Added Pin To Net: NetName=Dig6 Pin=D2-8
+Added Pin To Net: NetName=Dig6 Pin=U4-5
+Added Net: Name=Dig6
+Added Pin To Net: NetName=Dig7 Pin=D2-6
+Added Pin To Net: NetName=Dig7 Pin=U4-8
+Added Net: Name=Dig7
+Added Pin To Net: NetName=DIN Pin=U2-1
+Added Pin To Net: NetName=DIN Pin=U4-1
+Added Net: Name=DIN
+Added Pin To Net: NetName=GND Pin=Bat-holder1-2
+Added Pin To Net: NetName=GND Pin=BZZ?-2
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C6_Alu-2
+Added Pin To Net: NetName=GND Pin=Conn1-5
+Added Pin To Net: NetName=GND Pin=ISet1-3
+Added Pin To Net: NetName=GND Pin=Sw1-1
+Added Pin To Net: NetName=GND Pin=Sw1-2
+Added Pin To Net: NetName=GND Pin=Sw2-1
+Added Pin To Net: NetName=GND Pin=Sw2-2
+Added Pin To Net: NetName=GND Pin=Sw3-1
+Added Pin To Net: NetName=GND Pin=Sw3-2
+Added Pin To Net: NetName=GND Pin=Sw4-1
+Added Pin To Net: NetName=GND Pin=Sw4-2
+Added Pin To Net: NetName=GND Pin=U1-1
+Added Pin To Net: NetName=GND Pin=U2-6
+Added Pin To Net: NetName=GND Pin=U2-18
+Added Pin To Net: NetName=GND Pin=U2-28
+Added Pin To Net: NetName=GND Pin=U2-39
+Added Pin To Net: NetName=GND Pin=U4-4
+Added Pin To Net: NetName=GND Pin=U4-9
+Added Net: Name=GND
+Added Pin To Net: NetName=Incr Pin=R5-1
+Added Pin To Net: NetName=Incr Pin=Sw3-3
+Added Pin To Net: NetName=Incr Pin=Sw3-4
+Added Pin To Net: NetName=Incr Pin=U2-42
+Added Net: Name=Incr
+Added Pin To Net: NetName=LOAD Pin=U2-44
+Added Pin To Net: NetName=LOAD Pin=U4-12
+Added Net: Name=LOAD
+Added Pin To Net: NetName=Mode Pin=R3-1
+Added Pin To Net: NetName=Mode Pin=Sw1-3
+Added Pin To Net: NetName=Mode Pin=Sw1-4
+Added Pin To Net: NetName=Mode Pin=U2-11
+Added Net: Name=Mode
+Added Pin To Net: NetName=NetBat-holder1_1 Pin=Bat-holder1-1
+Added Net: Name=NetBat-holder1_1
+Added Pin To Net: NetName=NetBZZ?_1 Pin=BZZ?-1
+Added Pin To Net: NetName=NetBZZ?_1 Pin=Q1-2
+Added Net: Name=NetBZZ?_1
+Added Pin To Net: NetName=NetConn1_1 Pin=Conn1-1
+Added Pin To Net: NetName=NetConn1_1 Pin=U1-3
+Added Net: Name=NetConn1_1
+Added Pin To Net: NetName=NetCrys_1 Pin=Crys-1
+Added Net: Name=NetCrys_1
+Added Pin To Net: NetName=NetCrys_2 Pin=Crys-2
+Added Net: Name=NetCrys_2
+Added Pin To Net: NetName=NetISet1_2 Pin=ISet1-2
+Added Pin To Net: NetName=NetISet1_2 Pin=U4-18
+Added Net: Name=NetISet1_2
+Added Pin To Net: NetName=NetQ1_3 Pin=Q1-3
+Added Pin To Net: NetName=NetQ1_3 Pin=R6-2
+Added Net: Name=NetQ1_3
+Added Pin To Net: NetName=NetR6_1 Pin=R6-1
+Added Pin To Net: NetName=NetR6_1 Pin=U2-16
+Added Net: Name=NetR6_1
+Added Pin To Net: NetName=Reset Pin=R6-1
+Added Pin To Net: NetName=Reset Pin=Sw4-3
+Added Pin To Net: NetName=Reset Pin=Sw4-4
+Added Pin To Net: NetName=Reset Pin=U2-4
+Added Net: Name=Reset
+Added Pin To Net: NetName=SCL Pin=R1-1
+Added Pin To Net: NetName=SCL Pin=U2-19
+Added Net: Name=SCL
+Added Pin To Net: NetName=SDA Pin=R2-1
+Added Pin To Net: NetName=SDA Pin=U2-20
+Added Net: Name=SDA
+Added Pin To Net: NetName=segA Pin=D1-11
+Added Pin To Net: NetName=segA Pin=D2-11
+Added Pin To Net: NetName=segA Pin=U4-14
+Added Net: Name=segA
+Added Pin To Net: NetName=segB Pin=D1-7
+Added Pin To Net: NetName=segB Pin=D2-7
+Added Pin To Net: NetName=segB Pin=U4-16
+Added Net: Name=segB
+Added Pin To Net: NetName=segC Pin=D1-4
+Added Pin To Net: NetName=segC Pin=D2-4
+Added Pin To Net: NetName=segC Pin=U4-20
+Added Net: Name=segC
+Added Pin To Net: NetName=segDP Pin=D1-3
+Added Pin To Net: NetName=segDP Pin=D2-3
+Added Pin To Net: NetName=segDP Pin=U4-22
+Added Net: Name=segDP
+Added Pin To Net: NetName=segD Pin=D1-2
+Added Pin To Net: NetName=segD Pin=D2-2
+Added Pin To Net: NetName=segD Pin=U4-23
+Added Net: Name=segD
+Added Pin To Net: NetName=segE Pin=D1-1
+Added Pin To Net: NetName=segE Pin=D2-1
+Added Pin To Net: NetName=segE Pin=U4-21
+Added Net: Name=segE
+Added Pin To Net: NetName=segF Pin=D1-10
+Added Pin To Net: NetName=segF Pin=D2-10
+Added Pin To Net: NetName=segF Pin=U4-15
+Added Net: Name=segF
+Added Pin To Net: NetName=segG Pin=D1-5
+Added Pin To Net: NetName=segG Pin=D2-5
+Added Pin To Net: NetName=segG Pin=U4-17
+Added Net: Name=segG
+Added Pin To Net: NetName=VCC_5V Pin=C1-2
+Added Pin To Net: NetName=VCC_5V Pin=C4-2
+Added Pin To Net: NetName=VCC_5V Pin=C5-2
+Added Pin To Net: NetName=VCC_5V Pin=C6_Alu-1
+Added Pin To Net: NetName=VCC_5V Pin=ISet1-1
+Added Pin To Net: NetName=VCC_5V Pin=Q1-1
+Added Pin To Net: NetName=VCC_5V Pin=R1-2
+Added Pin To Net: NetName=VCC_5V Pin=R2-2
+Added Pin To Net: NetName=VCC_5V Pin=R3-2
+Added Pin To Net: NetName=VCC_5V Pin=R4-2
+Added Pin To Net: NetName=VCC_5V Pin=R5-2
+Added Pin To Net: NetName=VCC_5V Pin=R6-2
+Added Pin To Net: NetName=VCC_5V Pin=U1-2
+Added Pin To Net: NetName=VCC_5V Pin=U2-5
+Added Pin To Net: NetName=VCC_5V Pin=U2-17
+Added Pin To Net: NetName=VCC_5V Pin=U2-38
+Added Pin To Net: NetName=VCC_5V Pin=U4-19
+Added Net: Name=VCC_5V
+Added Pin To Net: NetName=XTAL1 Pin=C2-1
+Added Pin To Net: NetName=XTAL1 Pin=Crys_1-2
+Added Pin To Net: NetName=XTAL1 Pin=U2-8
+Added Net: Name=XTAL1
+Added Pin To Net: NetName=XTAL2 Pin=C3-1
+Added Pin To Net: NetName=XTAL2 Pin=Crys_1-1
+Added Pin To Net: NetName=XTAL2 Pin=U2-7
+Added Net: Name=XTAL2
+Added Class: Name=Bomp-countdown
+Added Room: Name=Bomp-countdown
