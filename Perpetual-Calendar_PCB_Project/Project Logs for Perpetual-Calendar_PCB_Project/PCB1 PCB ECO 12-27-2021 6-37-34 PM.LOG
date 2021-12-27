@@ -1,0 +1,4 @@
+Change Component Comment : Designator=R6 Old Comment=10k New Comment=1k
+Change Component Designator: OldDesignator=BZZ? NewDesignator=buz
+Change Net Name : Old Net Name=NetBZZ?_1 New Net Name=Netbuz_1
+Added Room: Name=Bomp-countdown

@@ -1,0 +1,15 @@
+Change Component Comment : Designator=SW? Old Comment=SW New Comment=RST
+Change Component Designator: OldDesignator=Bat-holder1 NewDesignator=BAT
+Change Component Designator: OldDesignator=buz NewDesignator=BUZZ
+Change Component Designator: OldDesignator=Conn1 NewDesignator=u_USB
+Change Component Designator: OldDesignator=Crys NewDesignator=CRYS_32
+Change Component Designator: OldDesignator=Crys_1 NewDesignator=CRYS_16
+Change Component Designator: OldDesignator=SW? NewDesignator=SW_RST
+Change Component Designator: OldDesignator=VOL? NewDesignator=VAR
+Change Net Name : Old Net Name=NetBat-holder1_1 New Net Name=NetBAT_1
+Change Net Name : Old Net Name=Netbuz_1 New Net Name=NetBUZZ_1
+Change Net Name : Old Net Name=NetConn1_1 New Net Name=NetU1_3
+Change Net Name : Old Net Name=NetCrys_1 New Net Name=NetCRYS_32_1
+Change Net Name : Old Net Name=NetCrys_2 New Net Name=NetCRYS_32_2
+Change Net Name : Old Net Name=NetR7_1 New Net Name=Buzzer
+Added Room: Name=Bomp-countdown
