@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=u_USB Old Footprint=MOLEX_47346-0001 New Footprint=USB-Micr-B-FCI-SMD
+Change Component Comment : Designator=u_USB Old Comment=Micro-USB New Comment=POWER
+Change component parameters: Designator = "u_USB" ("u_USB"); Footprint = "MOLEX_47346-0001"; UniqueID = "\CANMYUCB" ("\CANMYUCB")
+Added Room: Name=Bomp-countdown

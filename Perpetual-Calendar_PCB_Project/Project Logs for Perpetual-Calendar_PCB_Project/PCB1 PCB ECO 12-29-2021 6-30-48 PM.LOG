@@ -1,0 +1,9 @@
+Change Component Designator: OldDesignator=POWER NewDesignator=LED_R
+Added Component: Designator=UART(HEADER-1X2)
+Add component (AddParameter): Name = "REEL"; Value = "TH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "S1011E-36-ND"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=RXD Pin=UART-1
+Added Pin To Net: NetName=TXD Pin=UART-2
+Added Member To Class: ClassName=Bomp-countdown Member=Component UART
+Added Room: Name=Bomp-countdown
