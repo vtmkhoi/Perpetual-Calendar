@@ -11,5 +11,5 @@ Create a perpetual calendar using microcontroller AVR8bits, displayed on 7-segme
 
 # Haven't done
  - Blynk 7segments LED in Adjust's mode
- - revenge noise from button and SPI protocal
+ - Decrease noise from button and SPI protocal
 
