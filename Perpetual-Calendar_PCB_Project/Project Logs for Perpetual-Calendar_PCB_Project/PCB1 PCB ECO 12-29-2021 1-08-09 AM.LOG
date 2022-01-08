@@ -1,7 +1,0 @@
-Added Component: Designator=VAR(VR-S1)
-Add component (AddParameter): Name = "Value"; Value = "Volume 50k"; VariantName = "[No Variations]"
-Added Pin To Net: NetName=GND Pin=VAR-1
-Added Pin To Net: NetName=NetU4_18 Pin=VAR-2
-Added Pin To Net: NetName=VCC_5V Pin=VAR-3
-Added Member To Class: ClassName=Bomp-countdown Member=Component VAR 10K
-Added Room: Name=Bomp-countdown

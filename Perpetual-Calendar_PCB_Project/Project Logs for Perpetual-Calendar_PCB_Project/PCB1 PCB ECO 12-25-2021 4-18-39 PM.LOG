@@ -1,5 +1,0 @@
-Removed Pin From Net: NetName=VCC_5V Pin=C6_Alu-1
-Removed Pin From Net: NetName=GND Pin=C6_Alu-2
-Removed Member From Class: ClassName=Bomp-countdown Member=C6_Alu
-Added Member To Class: ClassName=Bomp-countdown Member=Component R6 1k
-Added Room: Name=Bomp-countdown
