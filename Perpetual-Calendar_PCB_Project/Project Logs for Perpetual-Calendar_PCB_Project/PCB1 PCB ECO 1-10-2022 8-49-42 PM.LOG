@@ -1,0 +1,21 @@
+Change Component Designator: OldDesignator=U NewDesignator=CD40106
+Added Component: Designator=LED_Y(SM-LED-0805-Red)
+Added Component: Designator=R12(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=LED_Y-2
+Added Pin To Net: NetName=NetLED_Y_1 Pin=LED_Y-1
+Added Pin To Net: NetName=NetLED_Y_1 Pin=R12-1
+Added Net: Name=NetLED_Y_1
+Added Pin To Net: NetName=User_LED Pin=R12-2
+Added Pin To Net: NetName=User_LED Pin=U2-37
+Added Net: Name=User_LED
+Added Member To Class: ClassName=Bomp-countdown Member=Component C6 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component C7 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component CD40106 CD40106BM
+Added Member To Class: ClassName=Bomp-countdown Member=Component LED_Y LED SMD
+Added Member To Class: ClassName=Bomp-countdown Member=Component R9 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R12 330
+Added Member To Class: ClassName=Bomp-countdown Member=Component SPI Connector 3x2
+Added Member To Class: ClassName=Bomp-countdown Member=Component u_USB 2040002-1
+Added Member To Class: ClassName=Bomp-countdown Member=Component UART Jumper 3
+Added Room: Name=Bomp-countdown

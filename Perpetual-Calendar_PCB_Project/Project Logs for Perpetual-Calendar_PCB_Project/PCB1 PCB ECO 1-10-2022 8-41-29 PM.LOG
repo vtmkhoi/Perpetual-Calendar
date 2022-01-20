@@ -1,0 +1,6 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C8
+Change Component Designator: OldDesignator=J NewDesignator=u_USB
+Change Component Designator: OldDesignator=R? NewDesignator=R10
+Change Component Designator: OldDesignator=R? NewDesignator=R11
+Added Member To Class: ClassName=Bomp-countdown Member=Component R11 10K
+Added Room: Name=Bomp-countdown

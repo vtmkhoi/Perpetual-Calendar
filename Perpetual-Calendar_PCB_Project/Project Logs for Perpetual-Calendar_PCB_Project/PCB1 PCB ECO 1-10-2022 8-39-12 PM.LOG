@@ -1,0 +1,147 @@
+Removed Pin From Net: NetName=Mode Pin=R3-1
+Removed Pin From Net: NetName=VCC_5V Pin=R3-2
+Removed Pin From Net: NetName=Adjust Pin=R4-1
+Removed Pin From Net: NetName=VCC_5V Pin=R4-2
+Removed Pin From Net: NetName=Incr Pin=R5-1
+Removed Pin From Net: NetName=VCC_5V Pin=R5-2
+Removed Pin From Net: NetName=GND Pin=Sw1-1
+Removed Pin From Net: NetName=GND Pin=Sw1-2
+Removed Pin From Net: NetName=Mode Pin=Sw1-3
+Removed Pin From Net: NetName=Mode Pin=Sw1-4
+Removed Pin From Net: NetName=GND Pin=Sw2-1
+Removed Pin From Net: NetName=GND Pin=Sw2-2
+Removed Pin From Net: NetName=Adjust Pin=Sw2-3
+Removed Pin From Net: NetName=Adjust Pin=Sw2-4
+Removed Pin From Net: NetName=GND Pin=Sw3-1
+Removed Pin From Net: NetName=GND Pin=Sw3-2
+Removed Pin From Net: NetName=Incr Pin=Sw3-3
+Removed Pin From Net: NetName=Incr Pin=Sw3-4
+Removed Pin From Net: NetName=RXD Pin=UART-1
+Removed Pin From Net: NetName=TXD Pin=UART-2
+Change Component Footprint: Designator=UART Old Footprint=HEADER-1X2 New Footprint=JP3
+Change Component Comment : Designator=UART Old Comment= New Comment=Jumper 3
+Change Component Comment : Designator=R8 Old Comment=330r New Comment=1K
+Change Component Designator: OldDesignator=POWER NewDesignator=LED_R
+Change component parameters: Designator = "UART" ("UART"); Footprint = "HEADER-1X2"; UniqueID = "\GBAOPYLN" ("\GBAOPYLN")
+Change component parameters (AddParameter): Name = "Value"; Value = "J3"; VariantName = "[No Variations]"
+Added Component: Designator=C6(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C7(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C?(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=J(TE_2040002-1)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Centerline_Pitch"; Value = ".65 mm[.025 in]"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "2040002-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number_of_Positions"; Value = "5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Product_Type"; Value = "Connector"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/2040002-1/TE%20Connectivity%20AMP%20Connectors/view-part/782025/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-2040002-1.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R9(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R?(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R?(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=SPI(JP3x2)
+Add component (AddParameter): Name = "Value"; Value = "Connector 3x2"; VariantName = "[No Variations]"
+Added Component: Designator=U(SOIC127P600X175-14N)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DigiKey-Purchase-URL"; Value = "https://snapeda.com/shop?store=DigiKey&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser-Purchase-URL"; Value = "https://snapeda.com/shop?store=Mouser&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "CD40106BM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SOIC-14 Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/CD40106BM/Texas%20Instruments/view-part/321259/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Texas_Instruments-Purchase-URL"; Value = "https://snapeda.com/shop?store=Texas+Instruments&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C?-1
+Added Pin To Net: NetName=VCC_5V Pin=J-1
+Added Pin To Net: NetName=GND Pin=J-5
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=GND Pin=R4-1
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=VCC_5V Pin=SPI-1
+Added Pin To Net: NetName=CLK Pin=SPI-2
+Added Pin To Net: NetName=GND Pin=SPI-4
+Added Pin To Net: NetName=Reset Pin=SPI-5
+Added Pin To Net: NetName=DIN Pin=SPI-6
+Added Pin To Net: NetName=VCC_5V Pin=Sw1-3
+Added Pin To Net: NetName=VCC_5V Pin=Sw1-4
+Added Pin To Net: NetName=VCC_5V Pin=Sw2-3
+Added Pin To Net: NetName=VCC_5V Pin=Sw2-4
+Added Pin To Net: NetName=VCC_5V Pin=Sw3-3
+Added Pin To Net: NetName=VCC_5V Pin=Sw3-4
+Added Pin To Net: NetName=Mode Pin=U-2
+Added Pin To Net: NetName=Adjust Pin=U-4
+Added Pin To Net: NetName=Incr Pin=U-6
+Added Pin To Net: NetName=GND Pin=U-7
+Added Pin To Net: NetName=VCC_5V Pin=U-14
+Added Pin To Net: NetName=TXD Pin=UART-1
+Added Pin To Net: NetName=RXD Pin=UART-2
+Added Pin To Net: NetName=GND Pin=UART-3
+Change Net Name : Old Net Name=Reset New Net Name=RST
+Added Pin To Net: NetName=i_Adjust Pin=C7-2
+Added Pin To Net: NetName=i_Adjust Pin=R?-2
+Added Pin To Net: NetName=i_Adjust Pin=U-3
+Added Net: Name=i_Adjust
+Added Pin To Net: NetName=i_Increase Pin=C?-2
+Added Pin To Net: NetName=i_Increase Pin=R?-2
+Added Pin To Net: NetName=i_Increase Pin=U-5
+Added Net: Name=i_Increase
+Added Pin To Net: NetName=i_Mode Pin=C6-2
+Added Pin To Net: NetName=i_Mode Pin=R9-2
+Added Pin To Net: NetName=i_Mode Pin=U-1
+Added Net: Name=i_Mode
+Added Pin To Net: NetName=MISO Pin=SPI-3
+Added Pin To Net: NetName=MISO Pin=U2-2
+Added Net: Name=MISO
+Added Pin To Net: NetName=NetR3_2 Pin=R3-2
+Added Pin To Net: NetName=NetR3_2 Pin=R9-1
+Added Pin To Net: NetName=NetR3_2 Pin=Sw1-1
+Added Pin To Net: NetName=NetR3_2 Pin=Sw1-2
+Added Net: Name=NetR3_2
+Added Pin To Net: NetName=NetR4_2 Pin=R4-2
+Added Pin To Net: NetName=NetR4_2 Pin=R?-1
+Added Pin To Net: NetName=NetR4_2 Pin=Sw2-1
+Added Pin To Net: NetName=NetR4_2 Pin=Sw2-2
+Added Net: Name=NetR4_2
+Added Pin To Net: NetName=NetR5_2 Pin=R5-2
+Added Pin To Net: NetName=NetR5_2 Pin=R?-1
+Added Pin To Net: NetName=NetR5_2 Pin=Sw3-1
+Added Pin To Net: NetName=NetR5_2 Pin=Sw3-2
+Added Net: Name=NetR5_2
+Added Member To Class: ClassName=Bomp-countdown Member=Component C6 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component C7 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component C? 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component J 2040002-1
+Added Member To Class: ClassName=Bomp-countdown Member=Component R9 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R? 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R? 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component SPI Connector 3x2
+Added Member To Class: ClassName=Bomp-countdown Member=Component UART Jumper 3
+Added Member To Class: ClassName=Bomp-countdown Member=Component U CD40106BM
+Added Room: Name=Bomp-countdown

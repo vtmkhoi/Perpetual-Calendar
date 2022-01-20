@@ -24,8 +24,8 @@
 #define TWI_DDR		DDRC
 #define	TWI_PIN		PINC
 
-#define	SDA_PIN		6
-#define	SCL_PIN		5
+#define	SDA_PIN		1
+#define	SCL_PIN		0
 //------------------------------
 
 #define	DS1307_SLA	0X68 //dia chi I2C SLA mac dinh cua DS1307: 0x68=1101000

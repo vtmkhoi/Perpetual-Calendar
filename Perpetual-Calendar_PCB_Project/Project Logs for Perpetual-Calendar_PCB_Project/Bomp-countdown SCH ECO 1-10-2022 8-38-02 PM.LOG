@@ -1,0 +1,15 @@
+Remove Pin=SPI-1 From Net=VCC_5V
+Remove Pin=SPI-2 From Net=CLK
+Remove Pin=SPI-4 From Net=GND
+Remove Pin=SPI-5 From Net=RST
+Remove Pin=SPI-6 From Net=DIN
+Remove Pin=U-2 From Net=Mode
+Remove Pin=U-4 From Net=Adjust
+Remove Pin=U-6 From Net=Incr
+Remove Pin=U-7 From Net=GND
+Remove Pin=U-14 From Net=VCC_5V
+Remove Pin=UART-1 From Net=TXD
+Remove Pin=UART-2 From Net=RXD
+Remove Pin=UART-3 From Net=GND
+Change Component Comment: Designator=R8 Old Comment=1K New Comment=330r
+Change Component Designator: OldDesignator=LED_R NewDesignator=POWER

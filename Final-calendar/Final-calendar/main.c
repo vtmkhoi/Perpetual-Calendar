@@ -1,13 +1,10 @@
 /*
- * lich van nien
+ * lich van nien ver-02
  *
  * Author : Vo Tan Minh Khoi
 			Ngac Bao Nam
 			Phung Thi Huong
  */ 
-
-
-
 
 
 #define F_CPU		8000000UL
@@ -69,10 +66,11 @@
 //--------------------------------------------------------------------------------------
 
 // dinh nghia cac bien thoi gian
-/*signed char Second = 59, Minute = 50, Hour = 11;*/
-volatile int16_t Second = 50, Minute = 50, Hour = 11, Day = 7, 
-Date = 25, Month = 12, Year = 21, Mode = 0, AP = 1, A_Hour = 0, A_Minute = 0, 
-timeZone = 7, lunarDate, lunarMonth, lunarYear, yyyy;
+uint8_t Second = 00, Minute = 39, Hour = 00, Day = 7, 
+Date = 15, Month = 1, Year = 22, Mode = 0, AP = 1, A_Hour = 0, A_Minute = 0, 
+timeZone = 7;
+uint8_t lunarDate, lunarMonth;
+uint16_t lunarYear, yyyy;
 
 //Su dung bien dong (volatile) de tro thanh bien tuy chon
 //Mode: chon che do 12h hoac 24h, Mode nam o bit 6 cua thanh ghi HOURS
@@ -81,13 +79,14 @@ timeZone = 7, lunarDate, lunarMonth, lunarYear, yyyy;
 // AP=1:PM, AP=0:AM
 
 
-volatile uint8_t tData[7];	//tData[7]: mang du lieu tam thoi
-volatile uint16_t Time_count = 0, blink_count=0;
+uint8_t tData[7];	//tData[7]: mang du lieu tam thoi
+uint16_t Time_count = 0, blink_count=0;
+char digitsInUse = 8;
 bool set = false;		//set = true: cho phep dieu chinh thoi gian
 bool EN_alarm = false;
-char bsw = 0;
-volatile uint8_t count = 0;
-volatile char SW_time_date = 0;
+char blinkmode = 0;
+uint8_t count = 0;
+char SW_time_date = 0;
 
 // chuyen doi nhi phan sang thap phan
 uint8_t BCDToDec(uint8_t BCD){
@@ -124,9 +123,52 @@ void Decode(void){
 	Year	= BCDToDec(tData[6]);
 }
 
+//Write to DS1307 time that want to change
+void FixTime(){
+	tData[0] = DecToBCD(Second);
+	tData[1] = DecToBCD(Minute);
+	if (Mode != 0) tData[2] = DecToBCD(Hour)|(Mode << 6)|(AP << 5); //mode 12h
+	else tData[2] = DecToBCD(Hour);
+	tData[3] = DecToBCD(Day);
+	tData[4] = DecToBCD(Date);
+	tData[5] = DecToBCD(Month);
+	tData[6] = DecToBCD(Year);
+	TWI_DS1307_wblock(0x00, tData, 7);
+	_delay_ms(1);
+	TWI_DS1307_wadr(0x00);
+	_delay_ms(1);
+}
+
+void spiSendByte (char databyte)
+{
+	// Copy data into the SPI data register
+	SPDR = databyte;
+	// Wait until transfer is complete
+	while (!(SPSR & (1 << SPIF)));
+}
+
+void MAX7219_writeData(uint8_t data_register, uint8_t data)
+{
+	MAX7219_LOAD0;
+	// Send the register where the data will be stored
+	spiSendByte(data_register);
+	// Send the data to be stored
+	spiSendByte(data);
+	MAX7219_LOAD1;
+}
+
+void MAX7219_clearDisplay()
+{
+	char i = digitsInUse;
+	// Loop until 0, but don't run for zero
+	do {
+		// Set each display in use to blank
+		MAX7219_writeData(i, MAX7219_CHAR_BLANK);
+	} while (--i);
+}
 
 void Display_7seg (void){
-	if (bsw==0)
+	if (blinkmode==0)
 	{
 		/********display time -> hh:mm:ss***************/
 		
@@ -305,34 +347,6 @@ void Display_7seg (void){
 	
 
 }
-//Write to DS1307 time that want to change
-void FixTime(){ 
-	tData[0] = DecToBCD(Second); 
-	tData[1] = DecToBCD(Minute); 
-	if (Mode != 0) tData[2] = DecToBCD(Hour)|(Mode << 6)|(AP << 5); //mode 12h
-	else tData[2] = DecToBCD(Hour);
-	tData[3] = DecToBCD(Day);
-	tData[4] = DecToBCD(Date);
-	tData[5] = DecToBCD(Month); 
-	tData[6] = DecToBCD(Year); 
-	TWI_DS1307_wblock(0x00, tData, 7); 
-	_delay_ms(1);
-	TWI_DS1307_wadr(0x00); 
-	_delay_ms(1);			
- }
-
-void Init_btn(void){
-
-    //------------------Initialize button------------
-	BTN_DDRD  &= ~((1<<SW)|(1<<ADJ));		// set input cho button setting
-	BTN_DDRD = (1<<BUZ_LED);			// set output cho buzzer + led
-	BTN_PORTD = (1<<SW)|(1<<ADJ);	// set dien tro keo len cho button setting
-	BTN_DDRB &= ~(1<<INCR);
-	BTN_PORTB = (1<<INCR);
-	userled_DDR=(1<<userled);
-}
-
-
 
 //-----------------------DOI DUONG LICH - AM LICH---------------------
 
@@ -446,9 +460,6 @@ double convertSolar2Lunar(uint8_t dd, uint8_t mm, uint16_t yy, int timeZone)
 		leapMonthDiff = getLeapMonthOffset(a11, timeZone);
 		if (diff >= leapMonthDiff) {
 			lunarMonth = diff + 10;
-// 			if (diff == leapMonthDiff) {
-// 				lunarLeap = 1;
-// 			}
 		}
 	}
 	if (lunarMonth > 12) {
@@ -457,37 +468,9 @@ double convertSolar2Lunar(uint8_t dd, uint8_t mm, uint16_t yy, int timeZone)
 	if (lunarMonth >= 11 && diff < 4) {
 		lunarYear -= 1;
 	}
+	return 0;
 }
 //--------------------------------------------------------------------
-char digitsInUse = 8;
-
-void spiSendByte (char databyte)
-{
-	// Copy data into the SPI data register
-	SPDR = databyte;
-	// Wait until transfer is complete
-	while (!(SPSR & (1 << SPIF)));
-}
-
-void MAX7219_writeData(uint8_t data_register, uint8_t data)
-{
-	MAX7219_LOAD0;
-	// Send the register where the data will be stored
-	spiSendByte(data_register);
-	// Send the data to be stored
-	spiSendByte(data);
-	MAX7219_LOAD1;
-}
-
-void MAX7219_clearDisplay()
-{
-	char i = digitsInUse;
-	// Loop until 0, but don't run for zero
-	do {
-		// Set each display in use to blank
-		MAX7219_writeData(i, MAX7219_CHAR_BLANK);
-	} while (--i);
-}
 
 void Init_Timer0(void){
 	//Initialize Timer0 to 1s - overflow interrupt--------------------
@@ -495,9 +478,20 @@ void Init_Timer0(void){
 	
     TIMSK=(1<<TOIE0);						
     sei();                      			
-	//----------------------------------------------------------------
 }
 
+
+void Init_btn(void){
+
+	//------------------Initialize button------------
+	BTN_DDRD  &= ~((1<<SW)|(1<<ADJ));		// set input cho button setting
+	BTN_DDRD |= (1<<BUZ_LED);			// set output cho buzzer + led
+	BTN_DDRD &= ~(1<<BUZ_LED);
+	BTN_PORTD |= (1<<SW)|(1<<ADJ);	// set dien tro keo len cho button setting
+	BTN_DDRB &= ~(1<<INCR);
+	BTN_PORTB |= (1<<INCR);
+	userled_DDR|=(1<<userled);
+}
 
 void Init_interupt(void){
 	MCUCR=(0<<ISC11)|(0<<ISC10)|(0<<ISC01)|(0<<ISC00);
@@ -528,6 +522,7 @@ int main(void){
 
 	
 	//------------------------------------
+	sei();
 	Init_Timer0();
 	
 	Init_interupt();
@@ -539,19 +534,19 @@ int main(void){
 	Decode(); 	//BCD data converter function from DS1307 to DEC
 	
 	_delay_ms(1);	
-	userled_PORT^=(1<<userled);
+	userled_PORT |= (1<<userled);
 	//************************************************************************************
 	while(1){
 		
 		yyyy=Year+2000;
 		convertSolar2Lunar(Date, Month, yyyy, timeZone);	
+		
 		Display_7seg();
-		if (Hour == A_Hour && Minute == A_Minute && EN_alarm == true)
-		{	
-			
-			Display_7seg();
-			BTN_PORTD |= (1<<BUZ_LED);
-		}
+		//if (Hour == A_Hour && Minute == A_Minute && EN_alarm == true)
+		//{	
+		//	Display_7seg();
+		//	BTN_PORTD |= (1<<BUZ_LED);
+		//}
 	}
 	return 0;
 }
@@ -577,10 +572,10 @@ ISR(TIMER0_OVF_vect){
 		}
 		Time_count=0; 
 	}
-	if (blink_count>=30)	//blink 500ms
+	if (blink_count>=15)	//blink 500ms
 	{
 		if(set == true ){
-				bsw^=1;
+				blinkmode^=1;
 				Display_7seg();
 		}
 		blink_count=0;
@@ -600,21 +595,21 @@ ISR(INT0_vect){
 	if(SW_time_date==0 && set==true) {
 		SW_time_date = 0;
 		count=0;
-		bsw=0;
+		blinkmode=0;
 		FixTime();
 		set=false;
 	}
 	if(SW_time_date==1 && set==true) {
 		SW_time_date = 1;
 		count=0;
-		bsw=0;
+		blinkmode=0;
 		FixTime();
 		set=false;
 	}
 	if(SW_time_date==3 && set==true) {
 		SW_time_date = 3;
 		count=0;
-		bsw=0;
+		blinkmode=0;
 		EN_alarm=true;
 		set=false;
 	}
@@ -630,7 +625,7 @@ ISR(INT1_vect){
 		count++;
 		if(count > 4) {
 			count = 0;
-			bsw=0;
+			blinkmode=0;
 			set=false;
 		}
 	}
@@ -640,7 +635,7 @@ ISR(INT1_vect){
 		count++;
 		if(count > 3) {
 			count = 0;
-			bsw=0;
+			blinkmode=0;
 			set=false;
 		}
 	}
@@ -650,9 +645,7 @@ ISR(INT1_vect){
 		count++;
 		if(count > 2) {
 			count = 0;
-			bsw=0;
-			A_Hour=0;
-			A_Minute=0;
+			blinkmode=0;
 			EN_alarm=false;
 			set=false;
 		}
@@ -664,7 +657,7 @@ ISR(INT2_vect){
 	if (EN_alarm == true && set==false)
 	{
 		EN_alarm=false;
-		BTN_PORTD = (0<<BUZ_LED);
+		BTN_PORTD &= ~(1<<BUZ_LED);
 	}
 	if((set == true) && (SW_time_date==0)){		//icrease dd, mm, h, min
 		if(count == 1) {
@@ -691,15 +684,15 @@ ISR(INT2_vect){
 				Date=1;
 			}
 		}
-		else if(count == 2) {
+		if(count == 2) {
 			Month++;
 			if(Month > 12) Month = 1;
 		}
-		else if(count == 3) {
+		if(count == 3) {
 			Hour++;
 			if(Hour > 23) Hour = 0;
 		}
-		else if(count == 4) {
+		if(count == 4) {
 			Minute++;
 			if(Minute > 59) Minute = 0;
 		}
@@ -730,11 +723,11 @@ ISR(INT2_vect){
 				Date=1;
 			}
 		}
-		else if(count == 2) {
+		if(count == 2) {
 			Month++;
 			if(Month > 12) Month = 1;
 		}
-		else if(count == 3) {
+		if(count == 3) {
 			Year++;
 			if(Year > 99) Year = 0;
 		}

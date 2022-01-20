@@ -1,16 +1,13 @@
 /*
- * lichult.c
+ * lich van nien
  *
- * Created: 12/9/2021 5:47:03 PM
- * Author : Group 2	Vo Tan Minh Khoi	
-					Ngac Bao Nam
-					Phung Thi Huong
+ * Author : Vo Tan Minh Khoi
+			Ngac Bao Nam
+			Phung Thi Huong
  */ 
 
-/* Define CPU CLock*/
-#define F_CPU		8000000UL
 
-/* Define library attached */
+#define F_CPU		8000000UL
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
@@ -18,27 +15,22 @@
 #include "myDS1307RTC.h"
 #include <stdbool.h>
 #include <math.h>
-
-/*
-* Define button 
-*/
-/* PORT D */
+//-- dinh nghia Button
 #define BTN_DDRD	DDRD
 #define BTN_PORTD	PORTD
 #define BTN_PIND	PIND
 #define SW			2
 #define ADJ			3
 #define BUZ_LED		7
-
-/* PORT B */
 #define BTN_DDRB	DDRB
 #define BTN_PORTB	PORTB
 #define INCR		2
+#define userled_DDR	DDRA
+#define userled_PORT	PORTA
+#define userled		0
 
-/*
-*	Define macro MAX7219
-*/
-/* Define SPI */
+
+//------------------------MAX7219--------------------------------
 #define PIN_SCK                   PORTB7
 #define PIN_MOSI                  PORTB5
 #define PIN_SS                    PORTB4
@@ -68,36 +60,42 @@
 #define MAX7219_CHAR_BLANK        0xF
 #define MAX7219_CHAR_NEGATIVE     0xA
 
-/*
-*	Define variables
-*/
-volatile int16_t Second = 50, Minute = 59, Hour = 23, Day = 2, 
-Date = 6, Month = 12, Year = 21, Mode = 0, AP = 1, A_Hour = 0, A_Minute = 0, 
-timeZone = 7, lunarDate, lunarMonth, lunarYear, yyyy;
 
+
+
+//--------------------------------------------------------------------------------------
+
+// dinh nghia cac bien thoi gian
+uint8_t Second = 00, Minute = 39, Hour = 00, Day = 7, 
+Date = 15, Month = 1, Year = 22, Mode = 0, AP = 1, A_Hour = 0, A_Minute = 0, 
+timeZone = 7;
+uint8_t lunarDate, lunarMonth;
+uint16_t lunarYear, yyyy;
+
+//Su dung bien dong (volatile) de tro thanh bien tuy chon
 //Mode: chon che do 12h hoac 24h, Mode nam o bit 6 cua thanh ghi HOURS
 //Mode = 1: 12h, = 0 24h
 //AP:bien chi AM hay PM trong mode 12h, AP nam o bit thu 5 c?a thanh ghi HOURS
 // AP=1:PM, AP=0:AM
 
-volatile uint8_t tData[7];	//tData[7]: mang du lieu tam thoi
-volatile uint16_t Time_count = 0;
+
+uint8_t tData[7];	//tData[7]: mang du lieu tam thoi
+uint16_t Time_count = 0, blink_count=0;
+char digitsInUse = 8;
 bool set = false;		//set = true: cho phep dieu chinh thoi gian
 bool EN_alarm = false;
-volatile uint8_t count = 0;
-volatile char SW_time_date = 0;
+char blinkmode = 0;
+uint8_t count = 0;
+char SW_time_date = 0;
 
-/*
-*	Convert data types and decode for max7219
-*/
-/* Convert BCD to Dec */
+// chuyen doi nhi phan sang thap phan
 uint8_t BCDToDec(uint8_t BCD){
 	uint8_t L, H;
 	L=BCD & 0x0F;
 	H=(BCD>>4)*10;
 	return (H+L);
 }
-/* Convert Dec to BCD */
+// chuyen doi thap phan sang nhi phan
 uint8_t DecToBCD(uint8_t Dec){
 	uint8_t L, H;
 	L=Dec % 10;
@@ -125,92 +123,230 @@ void Decode(void){
 	Year	= BCDToDec(tData[6]);
 }
 
-
-void Display_7seg (void){
-	/********display time -> hh:mm:ss***************/
-	
-	if (SW_time_date == 0)
-	{
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,(Second%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(Second/10));
-		MAX7219_writeData(MAX7219_DIGIT3,(Minute%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Minute/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(Hour%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Hour/10));
-		
-	}
-	/********display date -> DD:MM:YY***************/
-	else if (SW_time_date == 1)
-	{
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
-		MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
-		MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
-		MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
-		
-	}
-	/********display AM LICH *********************/
-	else if (SW_time_date==2)
-	{
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,((lunarYear%1000)%10));
-		MAX7219_writeData(MAX7219_DIGIT6,(((lunarYear%1000)/10)%10));
-		MAX7219_writeData(MAX7219_DIGIT5,(((lunarYear%1000)/100)%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(lunarYear/1000));
-		MAX7219_writeData(MAX7219_DIGIT3,(lunarMonth%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(lunarMonth/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(lunarDate%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(lunarDate/10));
-		
-	}
-	else
-	{
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT3,(A_Minute%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(A_Minute/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(A_Hour%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(A_Hour/10));
-	}
-}
-
 //Write to DS1307 time that want to change
-void FixTime(){ 
-	tData[0] = DecToBCD(Second); 
-	tData[1] = DecToBCD(Minute); 
+void FixTime(){
+	tData[0] = DecToBCD(Second);
+	tData[1] = DecToBCD(Minute);
 	if (Mode != 0) tData[2] = DecToBCD(Hour)|(Mode << 6)|(AP << 5); //mode 12h
 	else tData[2] = DecToBCD(Hour);
 	tData[3] = DecToBCD(Day);
 	tData[4] = DecToBCD(Date);
-	tData[5] = DecToBCD(Month); 
-	tData[6] = DecToBCD(Year); 
-	TWI_DS1307_wblock(0x00, tData, 7); 
+	tData[5] = DecToBCD(Month);
+	tData[6] = DecToBCD(Year);
+	TWI_DS1307_wblock(0x00, tData, 7);
 	_delay_ms(1);
-	TWI_DS1307_wadr(0x00); 
-	_delay_ms(1);			
- }
-
-/*
-*	Init button
-*/
-void Init_btn(void)
-{
-	BTN_DDRD  &= ~((1<<SW)|(1<<ADJ));		// set input cho button setting
-	BTN_DDRD = (1<<BUZ_LED);																// set output cho buzzer + led
-	BTN_PORTD = (1<<SW)|(1<<ADJ);	// set dien tro keo len cho button setting
+	TWI_DS1307_wadr(0x00);
+	_delay_ms(1);
 }
 
+void spiSendByte (char databyte)
+{
+	// Copy data into the SPI data register
+	SPDR = databyte;
+	// Wait until transfer is complete
+	while (!(SPSR & (1 << SPIF)));
+}
 
+void MAX7219_writeData(uint8_t data_register, uint8_t data)
+{
+	MAX7219_LOAD0;
+	// Send the register where the data will be stored
+	spiSendByte(data_register);
+	// Send the data to be stored
+	spiSendByte(data);
+	MAX7219_LOAD1;
+}
+
+void MAX7219_clearDisplay()
+{
+	char i = digitsInUse;
+	// Loop until 0, but don't run for zero
+	do {
+		// Set each display in use to blank
+		MAX7219_writeData(i, MAX7219_CHAR_BLANK);
+	} while (--i);
+}
+
+void Display_7seg (void){
+	if (blinkmode==0)
+	{
+		/********display time -> hh:mm:ss***************/
+		
+		if (SW_time_date == 0)
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,(Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(Hour/10));
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+			
+		}
+		/********display date -> DD:MM:YY***************/
+		else if (SW_time_date == 1)
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
+			MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+			
+		}
+		/********display AM LICH *********************/
+		else if (SW_time_date==2)
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,((lunarYear%1000)%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(((lunarYear%1000)/10)%10));
+			MAX7219_writeData(MAX7219_DIGIT5,(((lunarYear%1000)/100)%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(lunarYear/1000));
+			MAX7219_writeData(MAX7219_DIGIT3,(lunarMonth%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(lunarMonth/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(lunarDate%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(lunarDate/10));
+			
+		}
+		else
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(A_Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(A_Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,(A_Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(A_Hour/10));
+		}
+	} 
+	else
+	{
+		if ((count==1)&&(SW_time_date==0))	//blink date
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,(Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(Hour/10));
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT0,MAX7219_CHAR_BLANK);
+		}
+		if ((count==2)&&(SW_time_date==0))	//blink month
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,(Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(Hour/10));
+			MAX7219_writeData(MAX7219_DIGIT3,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT2,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+		}
+		if ((count==3)&&(SW_time_date==0))	//blink hour
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+		}
+		if ((count==4)&&(SW_time_date==0))	//blink min
+		{
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT5,(Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(Hour/10));
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+		}
+		if ((count==1)&&(SW_time_date==1))	//blink date
+		{
+			
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
+			MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT0,MAX7219_CHAR_BLANK);
+		}
+		if ((count==2)&&(SW_time_date==1))	//blink month
+		{
+			
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
+			MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
+			MAX7219_writeData(MAX7219_DIGIT3,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT2,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+		}
+		if ((count==3)&&(SW_time_date==1))	//blink year
+		{
+			
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
+			MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
+			MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
+			MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
+		}
+		if ((count==1)&&(SW_time_date==3))	//blink A_HOUR
+		{
+			
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,(A_Minute%10));
+			MAX7219_writeData(MAX7219_DIGIT6,(A_Minute/10));
+			MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
+
+		}
+		if ((count==2)&&(SW_time_date==3))	//blink A_MIN
+		{
+			
+			MAX7219_clearDisplay();
+			
+			MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
+			MAX7219_writeData(MAX7219_DIGIT5,(A_Hour%10));
+			MAX7219_writeData(MAX7219_DIGIT4,(A_Hour/10));
+		}
+	}
+	
+
+}
 
 //-----------------------DOI DUONG LICH - AM LICH---------------------
 
@@ -324,9 +460,6 @@ double convertSolar2Lunar(uint8_t dd, uint8_t mm, uint16_t yy, int timeZone)
 		leapMonthDiff = getLeapMonthOffset(a11, timeZone);
 		if (diff >= leapMonthDiff) {
 			lunarMonth = diff + 10;
-// 			if (diff == leapMonthDiff) {
-// 				lunarLeap = 1;
-// 			}
 		}
 	}
 	if (lunarMonth > 12) {
@@ -335,37 +468,9 @@ double convertSolar2Lunar(uint8_t dd, uint8_t mm, uint16_t yy, int timeZone)
 	if (lunarMonth >= 11 && diff < 4) {
 		lunarYear -= 1;
 	}
+	return 0;
 }
 //--------------------------------------------------------------------
-char digitsInUse = 8;
-
-void spiSendByte (char databyte)
-{
-	// Copy data into the SPI data register
-	SPDR = databyte;
-	// Wait until transfer is complete
-	while (!(SPSR & (1 << SPIF)));
-}
-
-void MAX7219_writeData(uint8_t data_register, uint8_t data)
-{
-	MAX7219_LOAD0;
-	// Send the register where the data will be stored
-	spiSendByte(data_register);
-	// Send the data to be stored
-	spiSendByte(data);
-	MAX7219_LOAD1;
-}
-
-void MAX7219_clearDisplay()
-{
-	char i = digitsInUse;
-	// Loop until 0, but don't run for zero
-	do {
-		// Set each display in use to blank
-		MAX7219_writeData(i, MAX7219_CHAR_BLANK);
-	} while (--i);
-}
 
 void Init_Timer0(void){
 	//Initialize Timer0 to 1s - overflow interrupt--------------------
@@ -373,7 +478,19 @@ void Init_Timer0(void){
 	
     TIMSK=(1<<TOIE0);						
     sei();                      			
-	//----------------------------------------------------------------
+}
+
+
+void Init_btn(void){
+
+	//------------------Initialize button------------
+	BTN_DDRD  &= ~((1<<SW)|(1<<ADJ));		// set input cho button setting
+	BTN_DDRD |= (1<<BUZ_LED);			// set output cho buzzer + led
+	BTN_DDRD &= ~(1<<BUZ_LED);
+	BTN_PORTD |= (1<<SW)|(1<<ADJ);	// set dien tro keo len cho button setting
+	BTN_DDRB &= ~(1<<INCR);
+	BTN_PORTB |= (1<<INCR);
+	userled_DDR|=(1<<userled);
 }
 
 void Init_interupt(void){
@@ -393,20 +510,19 @@ int main(void){
 	// SPI Enable, Master mode
 	SPCR |= (1 << SPE) | (1 << MSTR)| (1<<SPR1);
 
-	// Decode mode to "Font Code-B"
-	/*MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);*/
-
+	
 	// Scan limit runs from 0.
 	MAX7219_writeData(MAX7219_MODE_SCAN_LIMIT, 0x07);
 	MAX7219_writeData(MAX7219_MODE_INTENSITY, 0x05);
 	MAX7219_writeData(MAX7219_MODE_POWER, ON);
 	MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
 	
-	FixTime();
+	//FixTime();
 	Init_btn();// KEY_PORT=0xF8;
 
 	
 	//------------------------------------
+	sei();
 	Init_Timer0();
 	
 	Init_interupt();
@@ -418,19 +534,19 @@ int main(void){
 	Decode(); 	//BCD data converter function from DS1307 to DEC
 	
 	_delay_ms(1);	
-	
+	userled_PORT |= (1<<userled);
 	//************************************************************************************
 	while(1){
 		
 		yyyy=Year+2000;
 		convertSolar2Lunar(Date, Month, yyyy, timeZone);	
+		
 		Display_7seg();
-		if (Hour == A_Hour && Minute == A_Minute && EN_alarm == true)
-		{	
-			
-			Display_7seg();
-			BTN_PORTD |= (1<<BUZ_LED);
-		}
+		//if (Hour == A_Hour && Minute == A_Minute && EN_alarm == true)
+		//{	
+		//	Display_7seg();
+		//	BTN_PORTD |= (1<<BUZ_LED);
+		//}
 	}
 	return 0;
 }
@@ -439,6 +555,7 @@ char data[5];
 
 ISR(TIMER0_OVF_vect){ 	
 	Time_count++;
+	blink_count++;
 	if(Time_count>=10){ 	//1s Exactly
 		                
 		if(set == false ){
@@ -447,7 +564,7 @@ ISR(TIMER0_OVF_vect){
 			_delay_ms(1);		   				
 			TWI_DS1307_rblock(tData,7); 
 					
-			//Print result on LCD + 7Seg led		
+			//Print result on 7Seg led		
 			if(BCDToDec(tData[0]) !=Second){ 
 				Decode();			
 				Display_7seg();
@@ -455,118 +572,13 @@ ISR(TIMER0_OVF_vect){
 		}
 		Time_count=0; 
 	}
-	
-	if ((Time_count>5)&&(Time_count<10)&&(count==1)&&(SW_time_date==0))	//blink hour
+	if (blink_count>=15)	//blink 500ms
 	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,(Second%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(Second/10));
-		MAX7219_writeData(MAX7219_DIGIT3,(Minute%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Minute/10));
-		MAX7219_writeData(MAX7219_DIGIT1,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT0,MAX7219_CHAR_BLANK);
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==2)&&(SW_time_date==0))	//blink min
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,(Second%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(Second/10));
-		MAX7219_writeData(MAX7219_DIGIT3,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT2,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT1,(Hour%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Hour/10));
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==3)&&(SW_time_date==0))	//blink sec
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT3,(Minute%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Minute/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(Hour%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Hour/10));
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==1)&&(SW_time_date==1))	//blink date
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
-		MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
-		MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
-		MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
-		MAX7219_writeData(MAX7219_DIGIT1,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT0,MAX7219_CHAR_BLANK);
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==2)&&(SW_time_date==1))	//blink month
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,((yyyy%1000)%10));
-		MAX7219_writeData(MAX7219_DIGIT6,(((yyyy%1000)/10)%10));
-		MAX7219_writeData(MAX7219_DIGIT5,(((yyyy%1000)/100)%10));
-		MAX7219_writeData(MAX7219_DIGIT4,(yyyy/1000));
-		MAX7219_writeData(MAX7219_DIGIT3,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT2,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==3)&&(SW_time_date==1))	//blink year
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT3,(Month%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(Month/10));
-		MAX7219_writeData(MAX7219_DIGIT1,(Date%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(Date/10));
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==1)&&(SW_time_date==3))	//blink A_HOUR
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT3,(A_Minute%10));
-		MAX7219_writeData(MAX7219_DIGIT2,(A_Minute/10));
-		MAX7219_writeData(MAX7219_DIGIT1,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT0,MAX7219_CHAR_BLANK);
-	}
-	if ((Time_count>5)&&(Time_count<10)&&(count==2)&&(SW_time_date==3))	//blink A_MIN
-	{
-		MAX7219_writeData(MAX7219_MODE_DECODE, 0xFF);
-		MAX7219_clearDisplay();
-		
-		MAX7219_writeData(MAX7219_DIGIT7,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT6,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT5,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT4,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT3,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT2,MAX7219_CHAR_BLANK);
-		MAX7219_writeData(MAX7219_DIGIT1,(A_Hour%10));
-		MAX7219_writeData(MAX7219_DIGIT0,(A_Hour/10));
+		if(set == true ){
+				blinkmode^=1;
+				Display_7seg();
+		}
+		blink_count=0;
 	}
 }
 
@@ -583,18 +595,21 @@ ISR(INT0_vect){
 	if(SW_time_date==0 && set==true) {
 		SW_time_date = 0;
 		count=0;
+		blinkmode=0;
 		FixTime();
 		set=false;
 	}
 	if(SW_time_date==1 && set==true) {
 		SW_time_date = 1;
 		count=0;
+		blinkmode=0;
 		FixTime();
 		set=false;
 	}
 	if(SW_time_date==3 && set==true) {
 		SW_time_date = 3;
 		count=0;
+		blinkmode=0;
 		EN_alarm=true;
 		set=false;
 	}
@@ -604,26 +619,33 @@ ISR(INT0_vect){
 //Set time button
 ISR(INT1_vect){
 
-	set = true;
-	count++;
 	if (SW_time_date==0)
 	{
-		if(count > 3) {
+		set = true;
+		count++;
+		if(count > 4) {
 			count = 0;
+			blinkmode=0;
 			set=false;
 		}
 	}
 	if (SW_time_date==1)
 	{
+		set = true;
+		count++;
 		if(count > 3) {
 			count = 0;
+			blinkmode=0;
 			set=false;
 		}
 	}
 	if (SW_time_date==3)
 	{
+		set = true;
+		count++;
 		if(count > 2) {
 			count = 0;
+			blinkmode=0;
 			EN_alarm=false;
 			set=false;
 		}
@@ -635,20 +657,44 @@ ISR(INT2_vect){
 	if (EN_alarm == true && set==false)
 	{
 		EN_alarm=false;
-		BTN_PORTD = (0<<BUZ_LED);
+		BTN_PORTD &= ~(1<<BUZ_LED);
 	}
-	if((set == true) && (SW_time_date==0)){		//icrease hh, mm, ss
+	if((set == true) && (SW_time_date==0)){		//icrease dd, mm, h, min
 		if(count == 1) {
+			Date++;
+			if(Month == 4 || Month == 6  || Month == 9  || Month == 11)
+			{
+				if(Date > 30)
+				Date=1;
+			}
+			else if(Month == 1 || Month == 3  || Month == 5  || Month == 7 || Month == 8  || Month == 10  || Month == 12)
+			{
+				if(Date >31)
+				Date=1;
+			}
+			
+			else if(yyyy/4 == 0 && yyyy/400 == 0)
+			{
+				if(Date > 29)
+				Date=1;
+			}
+			else
+			{
+				if(Date > 28)
+				Date=1;
+			}
+		}
+		if(count == 2) {
+			Month++;
+			if(Month > 12) Month = 1;
+		}
+		if(count == 3) {
 			Hour++;
 			if(Hour > 23) Hour = 0;
 		}
-		else if(count == 2) {
+		if(count == 4) {
 			Minute++;
 			if(Minute > 59) Minute = 0;
-		}
-		else if(count == 3) {
-			Second++;
-			if(Second > 59) Second = 0;
 		}
 	}
 	
@@ -677,18 +723,17 @@ ISR(INT2_vect){
 				Date=1;
 			}
 		}
-		else if(count == 2) {
+		if(count == 2) {
 			Month++;
 			if(Month > 12) Month = 1;
 		}
-		else if(count == 3) {
+		if(count == 3) {
 			Year++;
 			if(Year > 99) Year = 0;
 		}
 	}
 	
-	if((set == true) && (SW_time_date==3))		//increase alarm
-	{		
+	if((set == true) && (SW_time_date==3)){		//increase alarm
 
 		if(count == 1) {
 			A_Hour++;

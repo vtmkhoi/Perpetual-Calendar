@@ -1,0 +1,90 @@
+Added Component: Designator=C6(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C7(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=C8(C0805)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RAD-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "33p"; VariantName = "[No Variations]"
+Added Component: Designator=CD40106(SOIC127P600X175-14N)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DigiKey-Purchase-URL"; Value = "https://snapeda.com/shop?store=DigiKey&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser-Purchase-URL"; Value = "https://snapeda.com/shop?store=Mouser&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "CD40106BM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SOIC-14 Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/CD40106BM/Texas%20Instruments/view-part/321259/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Texas_Instruments-Purchase-URL"; Value = "https://snapeda.com/shop?store=Texas+Instruments&id=321259"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=LED_Y(SM-LED-0805-Red)
+Added Component: Designator=R9(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R10(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R11(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=R12(SM-RES-1206)
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Component: Designator=SPI(JP3x2)
+Add component (AddParameter): Name = "Value"; Value = "Connector 3x2"; VariantName = "[No Variations]"
+Added Component: Designator=UART(JP3)
+Add component (AddParameter): Name = "Value"; Value = "J3"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=i_Mode Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=i_Adjust Pin=C7-2
+Added Pin To Net: NetName=GND Pin=C8-1
+Added Pin To Net: NetName=i_Increase Pin=C8-2
+Added Pin To Net: NetName=i_Mode Pin=CD40106-1
+Added Pin To Net: NetName=Mode Pin=CD40106-2
+Added Pin To Net: NetName=i_Adjust Pin=CD40106-3
+Added Pin To Net: NetName=Adjust Pin=CD40106-4
+Added Pin To Net: NetName=i_Increase Pin=CD40106-5
+Added Pin To Net: NetName=Incr Pin=CD40106-6
+Added Pin To Net: NetName=GND Pin=CD40106-7
+Added Pin To Net: NetName=VCC_5V Pin=CD40106-14
+Added Pin To Net: NetName=NetLED_Y_1 Pin=LED_Y-1
+Added Pin To Net: NetName=GND Pin=LED_Y-2
+Added Pin To Net: NetName=NetR3_2 Pin=R9-1
+Added Pin To Net: NetName=i_Mode Pin=R9-2
+Added Pin To Net: NetName=NetR4_2 Pin=R10-1
+Added Pin To Net: NetName=i_Adjust Pin=R10-2
+Added Pin To Net: NetName=NetR5_2 Pin=R11-1
+Added Pin To Net: NetName=i_Increase Pin=R11-2
+Added Pin To Net: NetName=NetLED_Y_1 Pin=R12-1
+Added Pin To Net: NetName=User_LED Pin=R12-2
+Added Pin To Net: NetName=VCC_5V Pin=SPI-1
+Added Pin To Net: NetName=CLK Pin=SPI-2
+Added Pin To Net: NetName=MISO Pin=SPI-3
+Added Pin To Net: NetName=GND Pin=SPI-4
+Added Pin To Net: NetName=RST Pin=SPI-5
+Added Pin To Net: NetName=DIN Pin=SPI-6
+Added Pin To Net: NetName=TXD Pin=UART-1
+Added Pin To Net: NetName=RXD Pin=UART-2
+Added Pin To Net: NetName=GND Pin=UART-3
+Added Member To Class: ClassName=Bomp-countdown Member=Component C6 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component C7 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component C8 0.1uF
+Added Member To Class: ClassName=Bomp-countdown Member=Component CD40106 CD40106BM
+Added Member To Class: ClassName=Bomp-countdown Member=Component LED_Y LED SMD
+Added Member To Class: ClassName=Bomp-countdown Member=Component R9 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R10 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R11 10K
+Added Member To Class: ClassName=Bomp-countdown Member=Component R12 330
+Added Member To Class: ClassName=Bomp-countdown Member=Component SPI Connector 3x2
+Added Member To Class: ClassName=Bomp-countdown Member=Component UART Jumper 3
+Added Room: Name=Bomp-countdown
