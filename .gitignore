@@ -1,6 +1,6 @@
-# Path of backup files
+#Backup files
 /*.bak
-/Hardware/Kicad/PerpetualCalendar/PerpetualCalendar-backups
+/Hardware/Kicad/PerpetualCalendar/PerpetualCalendar-backups/*
 
 #Kicad un-used files
 /Hardware/Kicad/PerpetualCalendar/fp-info-cache
